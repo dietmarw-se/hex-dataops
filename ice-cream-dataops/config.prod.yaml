@@ -23,9 +23,9 @@ variables:
       # OBJECT ID FOR TEST/PROD DATA PIPELINE OEE ENTRA GROUP
       data_pipeline_oee_source_id: 3ddddbb2-8632-4cda-922e-0f412013be27
       # OBJECT ID FOR TEST/PROD ADMIN TK ENTRA GROUP
-      readwrite_source_id: 97038035-d3a3-4ac9-bf6c-d94a8f592a61
+      readwrite_source_id:  08fff13c-465a-4a16-9588-b19161b42070
       # OBJECT ID FOR TEST/PROD ADMIN TK ENTRA GROUP
-      readonly_source_id: 97038035-d3a3-4ac9-bf6c-d94a8f592a61
+      readonly_source_id: 08fff13c-465a-4a16-9588-b19161b42070
       # OBJECT ID FOR TEST/PROD ICAPI EXTRACTORS ENTRA GROUP
       icapi_extractors_source_id: cb3eaca7-6f3c-4155-8031-46f2e57551f2
       # Client Ids
