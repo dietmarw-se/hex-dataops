@@ -1,8 +1,8 @@
-workflowExternalId: wf_icapi_data_pipeline
+workflowExternalId: wf_icapi_data_pipeline_dw
 version: '1'
 workflowDefinition:
   tasks:
-  - externalId: {{ workflow_external_id }}_icapi_assets_extractor_task
+  - externalId: icapi_assets_extractor_task
     type: function
     parameters:
       function:
@@ -10,18 +10,18 @@ workflowDefinition:
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
-  - externalId: {{ workflow_external_id }}_create_asset_hierarchy_task
+  - externalId: create_asset_hierarchy_task
     type: transformation
     parameters:
-      function:
+      transformation:
         externalId: icapi_assets_extractor
         concurrencyPolicy: waitForCurrent
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
     dependsOn:
-    - externalId: {{ workflow_external_id }}_icapi_assets_extractor_task  
-  - externalId: {{ workflow_external_id }}_icapi_timeseries_extractor_task
+    - externalId: icapi_assets_extractor_task  
+  - externalId: icapi_timeseries_extractor_task
     type: function
     parameters:
       function:
@@ -29,7 +29,7 @@ workflowDefinition:
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
-  - externalId: {{ workflow_external_id }}_icapi_datapoints_extractor_task
+  - externalId: icapi_datapoints_extractor_task
     type: function
     parameters:
       function:
@@ -38,20 +38,20 @@ workflowDefinition:
     timeout: 3600
     onFailure: abortWorkflow
     dependsOn:
-    - externalId: {{ workflow_external_id }}_icapi_timeseries_extractor_task 
-  - externalId: {{ workflow_external_id }}_icapi_ts_assets_contextualization_task
+    - externalId: icapi_timeseries_extractor_task 
+  - externalId: icapi_ts_assets_contextualization_task
     type: transformation
     parameters:
-      function:
+      transformation:
         externalId: icapi_ts_assets_contextualization
         concurrencyPolicy: waitForCurrent
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
     dependsOn:
-    - externalId: {{ workflow_external_id }}_icapi_timeseries_extractor_task   
-    - externalId: {{ workflow_external_id }}_create_asset_hierarchy_task 
-  - externalId: {{ workflow_external_id }}_oee_timeseries_task
+    - externalId: icapi_timeseries_extractor_task   
+    - externalId: create_asset_hierarchy_task 
+  - externalId: oee_timeseries_task
     type: function
     parameters:
       function:
@@ -60,5 +60,5 @@ workflowDefinition:
     timeout: 3600
     onFailure: abortWorkflow
     dependsOn:
-    - externalId: {{ workflow_external_id }}_icapi_datapoints_extractor_task   
-    - externalId: {{ workflow_external_id }}_icapi_ts_assets_contextualization_task
+    - externalId: icapi_datapoints_extractor_task   
+    - externalId: icapi_ts_assets_contextualization_task
