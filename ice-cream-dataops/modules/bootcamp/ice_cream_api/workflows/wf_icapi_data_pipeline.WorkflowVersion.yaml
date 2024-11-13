@@ -14,7 +14,7 @@ workflowDefinition:
     type: transformation
     parameters:
       transformation:
-        externalId: icapi_assets_extractor
+        externalId: tr-create_asset_hierarchy
         concurrencyPolicy: waitForCurrent
     retries: 3
     timeout: 3600
@@ -43,7 +43,7 @@ workflowDefinition:
     type: transformation
     parameters:
       transformation:
-        externalId: icapi_ts_assets_contextualization
+        externalId: tr-icapi_ts_assets_contextualization
         concurrencyPolicy: waitForCurrent
     retries: 3
     timeout: 3600
