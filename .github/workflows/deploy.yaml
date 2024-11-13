@@ -10,23 +10,21 @@ on:
 env:
   PYTHON_VERSION: '3.12'
   TOOLKIT_VERSION: '0.3.4'
-  BOOTCAMP_NUMBER: 01
 jobs:
   build-modules:
     strategy:
       matrix:
         environment:
-          # - test
-          # - prod
-          - none
-
+          - test
+          - prod
+          
     environment: ${{ matrix.environment }}
     runs-on: ubuntu-latest
     env:
       LOGIN_FLOW: client_credentials
       CDF_CLUSTER: westeurope-1
 
-      CDF_PROJECT: cdf-bootcamp-${{env.BOOTCAMP_NUMBER}}-${{ matrix.environment }}
+      CDF_PROJECT: cdf-bootcamp-01
       IDP_TOKEN_URL: https://login.microsoftonline.com/16e3985b-ebe8-4e24-9da4-933e21a9fc81/oauth2/v2.0/token
       IDP_TENANT_ID: 16e3985b-ebe8-4e24-9da4-933e21a9fc81
 
